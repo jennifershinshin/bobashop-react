@@ -1,13 +1,9 @@
 import React from "react";
 import bobaHeaderImg from "./boba-header-img.jpg";
-import buttonStyle from "./Buttons.module.css";
+import Button from "./Button.js";
 import "./App.css";
 
 function App() {
-  const toggleButtonColor = () => {
-    console.log("hello");
-  };
-
   return (
     <div className="App">
       <header className="App-header">
@@ -19,20 +15,20 @@ function App() {
         </div>
         <img src={bobaHeaderImg} className="App-logo" alt="logo" />
       </header>
-      <h3>Tea</h3>
-      <div className={buttonStyle["tea-toppings"]}>
-        <button onClick={toggleButtonColor}>Matcha</button>
-        <button>Rose</button>
-        <button>Ceylon</button>
+      <h2>Tea</h2>
+      <div>
+        <Button label="Matcha" />
+        <Button label="Rose" />
+        <Button label="Ceylon" />
       </div>
-      <h3>Toppings</h3>
-      <div className={buttonStyle}>
-        <button>Honey boba</button>
-        <button>Pudding</button>
-        <button>Lychee</button>
-        <button>Strawberries</button>
+      <h2>Toppings</h2>
+      <div>
+        <Button label="Honey boba" />
+        <Button label="Pudding" />
+        <Button label="Lychee" />
+        <Button label="Strawberries" />
       </div>
-      <h3>Your boba</h3>
+      <h2>Your boba</h2>
     </div>
   );
 }

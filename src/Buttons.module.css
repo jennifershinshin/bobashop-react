@@ -1,4 +1,6 @@
 .tea-toppings {
-  background: #c19eff;
-  font-size: 100px;
+  background-color: #c19eff;
+  padding: 10px;
+  margin-right: 20px;
+  font-size: 30px;
 }
