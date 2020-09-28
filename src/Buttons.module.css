@@ -1,4 +1,4 @@
-.tea_toppings {
+.tea-toppings {
   box-shadow: inset 0px 1px 0px 0px #efdcfb;
   background: linear-gradient(to bottom, #dfbdfa 5%, #bc80ea 100%);
   background-color: #dfbdfa;
@@ -15,17 +15,17 @@
   text-shadow: 0px 1px 0px #9752cc;
 }
 
-.tea_toppings:hover {
+.tea-toppings:hover {
   background: linear-gradient(to bottom, #bc80ea 5%, #dfbdfa 100%);
   background-color: #bc80ea;
 }
 
-.tea_toppings:active {
+.tea-toppings:active {
   position: relative;
   top: 1px;
 }
 
-.tea_toppings_clicked {
+.tea-toppings-clicked {
   box-shadow: inset 0px 1px 0px 0px #efdcfb;
   background: linear-gradient(to bottom, #bc80ea 5%, #9d5fcb 100%);
   background-color: #bc80ea;
