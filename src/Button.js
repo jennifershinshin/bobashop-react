@@ -5,19 +5,22 @@ class Button extends React.Component {
   constructor() {
     super();
 
-    this.state = { toggleColor: false };
+    this.state = { toggleColor: true };
     this.toggleButtonColor = this.toggleButtonColor.bind(this);
   }
 
   toggleButtonColor() {
     this.setState({ toggleColor: !this.state.toggleColor });
-    console.log(this.state.toggleColor);
   }
 
   render() {
+    let tea_toppings = this.state.toggleColor
+      ? "tea_toppings"
+      : "tea_toppings_clicked";
+
     return (
       <button
-        className={buttonStyle["tea-toppings"]}
+        className={buttonStyle[tea_toppings]}
         onClick={this.toggleButtonColor}
       >
         {this.props.label}
