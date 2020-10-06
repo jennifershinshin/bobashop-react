@@ -2,16 +2,17 @@ import React from "react";
 import buttonStyle from "./Buttons.module.css";
 
 class Button extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
-    this.state = { toggleColor: true, customers_tea_toppings: [] };
+    this.state = { toggleColor: true };
+
     this.toggle_tea_topping = this.toggle_tea_topping.bind(this);
   }
 
   toggle_tea_topping() {
     this.setState({ toggleColor: !this.state.toggleColor });
-    // this.setState({ customers_tea_toppings.push(this.props.label) });
+    this.props.addCustomersTeaToppings(this.props.label);
   }
 
   render() {
