@@ -40,7 +40,7 @@ class App extends React.Component {
           <img src={bobaHeaderImg} className="App-logo" alt="logo" />
         </header>
         <h2>Tea</h2>
-        <div>
+        <div className="tea-buttons">
           <Button
             label="Matcha"
             addCustomersTeaToppings={this.addCustomersTeaToppings}
@@ -49,7 +49,7 @@ class App extends React.Component {
           <Button label="Ceylon" />
         </div>
         <h2>Toppings</h2>
-        <div>
+        <div className="toppings-buttons">
           <Button label="Honey boba" />
           <Button label="Pudding" />
           <Button label="Lychee" />
