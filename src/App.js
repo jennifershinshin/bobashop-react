@@ -7,9 +7,10 @@ class App extends React.Component {
   constructor() {
     super();
 
-    this.state = { customers_tea_toppings: [] };
+    this.state = { customers_tea: "", customers_tea_toppings: [] };
 
     this.addCustomersTeaToppings = this.addCustomersTeaToppings.bind(this);
+    this.updateCustomersTea = this.updateCustomersTea.bind(this);
   }
 
   addCustomersTeaToppings(teaTopping) {
@@ -25,6 +26,12 @@ class App extends React.Component {
         console.log(this.state.customers_tea_toppings.length);
       }
     );
+  }
+
+  updateCustomersTea(tea) {
+    this.setState({ customers_tea: tea }, () => {
+      console.log(this.state.customers_tea);
+    });
   }
 
   render() {
@@ -43,10 +50,19 @@ class App extends React.Component {
         <div className="tea-buttons">
           <Button
             label="Matcha"
-            addCustomersTeaToppings={this.addCustomersTeaToppings}
+            updateCustomersTea={this.updateCustomersTea}
+            customers_tea={this.customers_tea}
           />
-          <Button label="Rose" />
-          <Button label="Ceylon" />
+          <Button
+            label="Rose"
+            updateCustomersTea={this.updateCustomersTea}
+            customers_tea={this.customers_tea}
+          />
+          <Button
+            label="Ceylon"
+            updateCustomersTea={this.updateCustomersTea}
+            customers_tea={this.customers_tea}
+          />
         </div>
         <h2>Toppings</h2>
         <div className="toppings-buttons">
