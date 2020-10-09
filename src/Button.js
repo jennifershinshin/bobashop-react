@@ -8,19 +8,20 @@ class Button extends React.Component {
     this.state = { toggleColor: true };
 
     this.toggle_tea_topping = this.toggle_tea_topping.bind(this);
-    this.updateCustomersTeaButton = this.updateCustomersTeaButton(this);
+    this.updateCustomersTeaButton = this.updateCustomersTeaButton.bind(this);
   }
 
   toggle_tea_topping() {
     this.setState({ toggleColor: !this.state.toggleColor });
-    this.updateCustomersTea();
+    this.updateCustomersTeaButton();
   }
 
   updateCustomersTeaButton() {
-    if (this.props.customers_tea == this.props.label) {
+    if (this.props.customers_tea === this.props.label) {
       console.log("heyyy *dab*");
     }
     this.props.updateCustomersTea(this.props.label);
+    console.log(`${this.props.customers_tea} ${this.props.label}`);
   }
 
   render() {
