@@ -17,11 +17,19 @@ class Button extends React.Component {
   }
 
   updateCustomersTeaButton() {
-    if (this.props.customers_tea === this.props.label) {
-      console.log("heyyy *dab*");
+    if (this.props.customers_tea === undefined) {
+      console.log("customer wants " + this.props.label);
+      this.props.updateCustomersTea(this.props.label);
     }
-    this.props.updateCustomersTea(this.props.label);
-    console.log(`${this.props.customers_tea} ${this.props.label}`);
+    else if (this.props.customers_tea === this.props.label) {
+      console.log("customer does not want + " + this.props.label);
+      this.props.updateCustomersTea(undefined);
+    }
+    else {
+      //change css of the other button
+      //this.props.updateCustomersTea(this.props.label)
+    }
+    console.log("child: " + this.props.customers_tea + "\n label: " + this.props.label);
   }
 
   render() {

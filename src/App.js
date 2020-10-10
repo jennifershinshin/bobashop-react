@@ -30,7 +30,7 @@ class App extends React.Component {
 
   updateCustomersTea(tea) {
     this.setState({ customers_tea: tea }, () => {
-      console.log(this.state.customers_tea);
+      console.log("parent: " + this.state.customers_tea);
     });
   }
 
