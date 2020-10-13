@@ -51,17 +51,17 @@ class App extends React.Component {
           <Button
             label="Matcha"
             updateCustomersTea={this.updateCustomersTea}
-            customers_tea={this.customers_tea}
+            customers_tea={this.state.customers_tea}
           />
           <Button
             label="Rose"
             updateCustomersTea={this.updateCustomersTea}
-            customers_tea={this.customers_tea}
+            customers_tea={this.state.customers_tea}
           />
           <Button
             label="Ceylon"
             updateCustomersTea={this.updateCustomersTea}
-            customers_tea={this.customers_tea}
+            customers_tea={this.state.customers_tea}
           />
         </div>
         <h2>Toppings</h2>

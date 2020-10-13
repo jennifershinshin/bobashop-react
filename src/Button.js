@@ -15,28 +15,28 @@ class Button extends React.Component {
     this.setState({ toggleColor: !this.state.toggleColor });
     this.updateCustomersTeaButton();
   }
-
+  
   updateCustomersTeaButton() {
-    if (this.props.customers_tea === undefined) {
+    if (this.props.customers_tea === "") {
       console.log("customer wants " + this.props.label);
       this.props.updateCustomersTea(this.props.label);
     }
     else if (this.props.customers_tea === this.props.label) {
-      console.log("customer does not want + " + this.props.label);
+      console.log(`customer does NOT want ${this.props.label}`);
       this.props.updateCustomersTea(undefined);
     }
     else {
       //change css of the other button
       //this.props.updateCustomersTea(this.props.label)
     }
-    console.log("child: " + this.props.customers_tea + "\n label: " + this.props.label);
   }
 
   render() {
     let tea_toppings = this.state.toggleColor
       ? "tea-toppings"
       : "tea-toppings-clicked";
-
+    
+      console.log(`child: ${this.props.customers_tea} \n label: ${this.props.label}`);
     return (
       <button
         className={buttonStyle[tea_toppings]}
