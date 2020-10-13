@@ -29,9 +29,7 @@ class App extends React.Component {
   }
 
   updateCustomersTea(tea) {
-    this.setState({ customers_tea: tea }, () => {
-      console.log("parent: " + this.state.customers_tea);
-    });
+    this.setState({ customers_tea: tea });
   }
 
   render() {
@@ -49,16 +47,19 @@ class App extends React.Component {
         <h2>Tea</h2>
         <div className="tea-buttons">
           <Button
+            className="MatchaButton"
             label="Matcha"
             updateCustomersTea={this.updateCustomersTea}
             customers_tea={this.state.customers_tea}
           />
           <Button
+            className="RoseButton"
             label="Rose"
             updateCustomersTea={this.updateCustomersTea}
             customers_tea={this.state.customers_tea}
           />
           <Button
+            className="CeylonButton"
             label="Ceylon"
             updateCustomersTea={this.updateCustomersTea}
             customers_tea={this.state.customers_tea}
