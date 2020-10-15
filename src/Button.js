@@ -1,5 +1,4 @@
 import React from "react";
-import ReactDOM from 'react-dom';
 import buttonStyle from "./Buttons.module.css";
 
 class Button extends React.Component {
@@ -7,7 +6,6 @@ class Button extends React.Component {
     super(props);
 
     this.state = { toggleColor: true };
-    this.button = React.createRef();
 
     this.toggle_tea_topping = this.toggle_tea_topping.bind(this);
     this.updateCustomersTeaButton = this.updateCustomersTeaButton.bind(this);
@@ -28,14 +26,18 @@ class Button extends React.Component {
       this.props.updateCustomersTea("");
     }
     else if (this.props.customers_tea !== this.props.label) {
-      //change css of the other button
       console.log(`customer wants ${this.props.label} instead`);
       this.props.updateCustomersTea(this.props.label);
-      //var otherButton = ReactDOM.findDOMNode(Button).getElementsByClassName(`MatchaButton`);
-      //if(otherButton == null) console.log(`hi`);
+      //componentDidUpdate takes care of css of previous chosen tea button's
     }
     else {
       console.log(`Error in updateCustomersTeaButton() Button.js`);
+    }
+  }
+
+  componentDidUpdate(prevProps) {
+    if(this.props.customers_tea !== prevProps.customers_tea && this.props.label === prevProps.customers_tea) {
+      this.setState({ toggleColor: !this.state.toggleColor });
     }
   }
 
@@ -43,16 +45,14 @@ class Button extends React.Component {
     let tea_toppings = this.state.toggleColor
       ? "tea-toppings"
       : "tea-toppings-clicked";
-    
     return (
       <button
         className={buttonStyle[tea_toppings]}
-        ref={this.button}
         onClick={this.toggle_tea_topping}
       >
         {this.props.label}
       </button>
-    );
+    )
   }
 }
 

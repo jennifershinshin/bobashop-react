@@ -9,11 +9,11 @@ class App extends React.Component {
 
     this.state = { customers_tea: "", customers_tea_toppings: [] };
 
-    this.addCustomersTeaToppings = this.addCustomersTeaToppings.bind(this);
+    this.addCustomersToppings = this.addCustomersToppings.bind(this);
     this.updateCustomersTea = this.updateCustomersTea.bind(this);
   }
 
-  addCustomersTeaToppings(teaTopping) {
+  addCustomersToppings(teaTopping) {
     this.setState(
       {
         customers_tea_toppings: this.state.customers_tea_toppings.concat(
@@ -47,19 +47,16 @@ class App extends React.Component {
         <h2>Tea</h2>
         <div className="tea-buttons">
           <Button
-            className="MatchaButton"
             label="Matcha"
             updateCustomersTea={this.updateCustomersTea}
             customers_tea={this.state.customers_tea}
           />
           <Button
-            className="RoseButton"
             label="Rose"
             updateCustomersTea={this.updateCustomersTea}
             customers_tea={this.state.customers_tea}
           />
           <Button
-            className="CeylonButton"
             label="Ceylon"
             updateCustomersTea={this.updateCustomersTea}
             customers_tea={this.state.customers_tea}
