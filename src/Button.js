@@ -18,15 +18,12 @@ class Button extends React.Component {
   
   updateCustomersTeaButton() {
     if (this.props.customers_tea === "") {
-      console.log(`customer wants ${this.props.label}`);
       this.props.updateCustomersTea(this.props.label);
     }
     else if (this.props.customers_tea === this.props.label) {
-      console.log(`customer does NOT want ${this.props.label}`);
       this.props.updateCustomersTea("");
     }
     else if (this.props.customers_tea !== this.props.label) {
-      console.log(`customer wants ${this.props.label} instead`);
       this.props.updateCustomersTea(this.props.label);
       //componentDidUpdate takes care of css of previous chosen tea button's
     }
@@ -36,7 +33,9 @@ class Button extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
-    if(this.props.customers_tea !== prevProps.customers_tea && this.props.label === prevProps.customers_tea) {
+    if(this.props.customers_tea !== ""
+      && this.props.customers_tea !== prevProps.customers_tea
+      && this.props.label === prevProps.customers_tea) {
       this.setState({ toggleColor: !this.state.toggleColor });
     }
   }
