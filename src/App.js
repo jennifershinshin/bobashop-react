@@ -29,7 +29,15 @@ class App extends React.Component {
   }
 
   updateCustomersTea(tea) {
-    this.setState({ customers_tea: tea });
+    if (this.state.customers_tea === "" || this.state.customers_tea !== tea) {
+      this.setState({ customers_tea: tea });
+    }
+    else if (this.state.customers_tea === tea) {
+      this.setState({ customers_tea: "" });
+    }
+    else {
+      console.log(`Error in updateCustomersTeaButton() Button.js`);
+    }
   }
 
   render() {
@@ -70,6 +78,7 @@ class App extends React.Component {
           <Button label="Strawberries" />
         </div>
         <h2>Your boba</h2>
+        <h4>{this.state.customers_tea}</h4>
       </div>
     );
   }
