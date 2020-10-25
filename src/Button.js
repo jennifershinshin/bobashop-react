@@ -12,14 +12,23 @@ class Button extends React.Component {
 
   toggleTeaTopping() {
     this.setState({ toggleColor: !this.state.toggleColor });
-    this.props.updateCustomersTea(this.props.label);
+
+    if(this.props.group === "tea") {
+      this.props.updateCustomersTea(this.props.label);
+    }
+    else if(this.props.group === "topping") {
+      this.props.updateCustomersToppings(this.props.label, this.props.index);
+    }
+    else {
+      console.log(`Error in toggleTeaTopping in Button.js. this.props.group is not set`);
+    }
   }
 
   componentDidUpdate(prevProps) {
     if(this.props.customers_tea !== ""
       && this.props.customers_tea !== prevProps.customers_tea
       && this.props.label === prevProps.customers_tea) {
-      this.setState({ toggleColor: !this.state.toggleColor });
+        this.setState({ toggleColor: !this.state.toggleColor });
     }
   }
 
