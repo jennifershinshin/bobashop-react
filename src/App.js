@@ -1,13 +1,13 @@
-import React from "react";
-import bobaHeaderImg from "./boba-header-img.jpg";
-import Button from "./Button.js";
-import "./App.css";
+import React from 'react';
+import bobaHeaderImg from './boba-header-img.jpg';
+import Button from './Button.js';
+import './App.css';
 
 class App extends React.Component {
   constructor() {
     super();
 
-    this.state = { customers_tea: "", customers_toppings: ['', '', '', ''] };
+    this.state = { customers_tea: '', customers_toppings: ['', '', '', ''] };
 
     this.updateCustomersTea = this.updateCustomersTea.bind(this);
     this.updateCustomersToppings = this.updateCustomersToppings.bind(this);
@@ -15,11 +15,11 @@ class App extends React.Component {
   }
   
   updateCustomersTea(tea) {
-    if (this.state.customers_tea === "" || this.state.customers_tea !== tea) {
+    if (this.state.customers_tea === '' || this.state.customers_tea !== tea) {
       this.setState({ customers_tea: tea });
     }
     else if (this.state.customers_tea === tea) {
-      this.setState({ customers_tea: "" });
+      this.setState({ customers_tea: '' });
     }
     else {
       console.log(`Error in updateCustomersTea() App.js`);
@@ -42,76 +42,95 @@ class App extends React.Component {
   }
 
   printCustomersOrder() {
+    let boba_order = '';
+    let first_topping = false;
+
+    if(this.state.customers_tea !== '') {
+      boba_order += this.state.customers_tea;
+
+      this.state.customers_toppings.map((topping, index) => {
+        if(topping !== '') {
+          if(!first_topping) {
+            boba_order += ' with ';
+            first_topping = true;
+          }
+          boba_order += `${topping}, `;
+        }
+        return this.state.customers_toppings;
+      });
+
+      if(first_topping) { boba_order = boba_order.substring(0, boba_order.length - 2); }
+    }
+    
     return (
-      <h4>{this.state.customers_tea}</h4>
+      <h4 className="customers-order">{boba_order}</h4>
     )
   }
 
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
+      <div className='App'>
+        <header className='App-header'>
           <h1>Momo Bubble Cafe</h1>
-          <div className="header-buttons">
-            <button className="make-boba-button">Make boba!</button>
-            <button className="about-button">About</button>
-            <button className="contact-button">Contact</button>
+          <div>
+            <button className='header-buttons'>About</button>
+            <button className='header-buttons'>Contact</button>
           </div>
-          <img src={bobaHeaderImg} className="App-logo" alt="logo" />
+          <img src={bobaHeaderImg} className='App-logo' alt='logo' />
         </header>
-        <h2>Tea</h2>
+        <h2 className='Subheaders'>Tea</h2>
         <div>
           <Button
-            label="Matcha"
-            group="tea"
+            label='Matcha'
+            group='tea'
             updateCustomersTea={this.updateCustomersTea}
             customers_tea={this.state.customers_tea}
           />
           <Button
-            label="Rose"
-            group="tea"
+            label='Rose'
+            group='tea'
             updateCustomersTea={this.updateCustomersTea}
             customers_tea={this.state.customers_tea}
           />
           <Button
-            label="Ceylon"
-            group="tea"
+            label='Ceylon'
+            group='tea'
             updateCustomersTea={this.updateCustomersTea}
             customers_tea={this.state.customers_tea}
           />
         </div>
-        <h2>Toppings</h2>
+        <h2 className='Subheaders'>Toppings</h2>
         <div>
           <Button
-            label="Honey boba"
-            group="topping"
+            label='Honey boba'
+            group='topping'
             index={0}
             updateCustomersToppings={this.updateCustomersToppings}
             customers_toppings={this.state.customers_toppings}
           />
           <Button
-            label="Pudding"
-            group="topping"
+            label='Pudding'
+            group='topping'
             index={1}
             updateCustomersToppings={this.updateCustomersToppings}
             customers_toppings={this.state.customers_toppings}
           />
           <Button
-            label="Lychee"
-            group="topping"
+            label='Lychee'
+            group='topping'
             index={2}
             updateCustomersToppings={this.updateCustomersToppings}
             customers_toppings={this.state.customers_toppings}
           />
           <Button
-            label="Strawberries"
-            group="topping"
+            label='Strawberries'
+            group='topping'
             index={3}
             updateCustomersToppings={this.updateCustomersToppings}
             customers_toppings={this.state.customers_toppings}
           />
         </div>
-        <h2>Your boba</h2>
+        <h2 className='Subheaders'>Your boba</h2>
         {this.printCustomersOrder()}
       </div>
     );

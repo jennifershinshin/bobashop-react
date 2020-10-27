@@ -1,5 +1,5 @@
-import React from "react";
-import buttonStyle from "./Buttons.module.css";
+import React from 'react';
+import buttonStyle from './Buttons.module.css';
 
 class Button extends React.Component {
   constructor(props) {
@@ -13,10 +13,10 @@ class Button extends React.Component {
   toggleTeaTopping() {
     this.setState({ toggleColor: !this.state.toggleColor });
 
-    if(this.props.group === "tea") {
+    if(this.props.group === 'tea') {
       this.props.updateCustomersTea(this.props.label);
     }
-    else if(this.props.group === "topping") {
+    else if(this.props.group === 'topping') {
       this.props.updateCustomersToppings(this.props.label, this.props.index);
     }
     else {
@@ -25,7 +25,7 @@ class Button extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
-    if(this.props.customers_tea !== ""
+    if(this.props.customers_tea !== ''
       && this.props.customers_tea !== prevProps.customers_tea
       && this.props.label === prevProps.customers_tea) {
         this.setState({ toggleColor: !this.state.toggleColor });
@@ -34,8 +34,8 @@ class Button extends React.Component {
 
   render() {
     let tea_toppings = this.state.toggleColor
-      ? "tea-toppings"
-      : "tea-toppings-clicked";
+      ? 'tea-toppings'
+      : 'tea-toppings-clicked';
     return (
       <button
         className={buttonStyle[tea_toppings]}
