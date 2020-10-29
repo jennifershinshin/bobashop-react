@@ -72,12 +72,9 @@ class App extends React.Component {
       <div className='App'>
         <header className='App-header'>
           <h1>Momo Bubble Cafe</h1>
-          <div>
-            <button className='header-buttons'>About</button>
-            <button className='header-buttons'>Contact</button>
-          </div>
           <img src={bobaHeaderImg} className='App-logo' alt='logo' />
         </header>
+        <h1 className='Subheaders'>Customize your boba!</h1>
         <h2 className='Subheaders'>Tea</h2>
         <div>
           <Button
