@@ -1,50 +1,42 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import buttonStyle from './Buttons.module.css';
 
-class Button extends React.Component {
-  constructor(props) {
-    super(props);
+function Button(props) {
+  const [toggle_Color, setToggleColor] = useState(true);
 
-    this.state = { toggleColor: true };
+  const toggleTeaTopping = () => {
+    setToggleColor(!toggle_Color);
 
-    this.toggleTeaTopping = this.toggleTeaTopping.bind(this);
-  }
-
-  toggleTeaTopping() {
-    this.setState({ toggleColor: !this.state.toggleColor });
-
-    if(this.props.group === 'tea') {
-      this.props.updateCustomersTea(this.props.label);
+    if(props.group === 'tea') {
+      props.updateCustomersTea(props.label);
     }
-    else if(this.props.group === 'topping') {
-      this.props.updateCustomersToppings(this.props.label, this.props.index);
+    else if(props.group === 'topping') {
+      props.updateCustomersToppings(props.label, props.index);
     }
     else {
-      console.log(`Error in toggleTeaTopping in Button.js. this.props.group is not set`);
+      console.log(`Error in toggleTeaTopping in Button.js. props.group is not set`);
     }
   }
 
-  componentDidUpdate(prevProps) {
-    if(this.props.customers_tea !== ''
-      && this.props.customers_tea !== prevProps.customers_tea
-      && this.props.label === prevProps.customers_tea) {
-        this.setState({ toggleColor: !this.state.toggleColor });
-    }
-  }
+  useEffect(() => {
+      if(props.customers_tea !== ''
+      && props.customers_tea !== props.prev_customers_tea
+      && props.label === props.prev_customers_tea) {
+        setToggleColor(!toggle_Color);
+      }
+    }, [props.customers_tea]);
 
-  render() {
-    let tea_toppings = this.state.toggleColor
-      ? 'tea-toppings'
-      : 'tea-toppings-clicked';
-    return (
-      <button
-        className={buttonStyle[tea_toppings]}
-        onClick={this.toggleTeaTopping}
-      >
-        {this.props.label}
-      </button>
-    )
-  }
+  let tea_toppings = toggle_Color
+    ? 'tea-toppings'
+    : 'tea-toppings-clicked';
+  return (
+    <button
+      className={buttonStyle[tea_toppings]}
+      onClick={toggleTeaTopping}
+    >
+      {props.label}
+    </button>
+  )
 }
 
 export default Button;
